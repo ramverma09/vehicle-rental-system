@@ -37,8 +37,7 @@ function Vehicles() {
 
   return (
     <div>
-      <h1>Available Vehicles</h1>
-
+<h1>Vehicle Rental System</h1>
       {message && <p>{message}</p>}
 
       {vehicles.length === 0 ? (
