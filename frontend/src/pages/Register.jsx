@@ -44,12 +44,13 @@ function Register() {
   return (
     <div className="auth-container">
       <div className="auth-box">
-        <h1>Vehicle Rental System</h1>
-
-        <h2>Register</h2>
+        <p className="auth-brand"><span>D</span> DriveEasy</p>
+        <p className="eyebrow">Start your journey</p>
+        <h1>Create your account</h1>
+        <p className="auth-subtitle">A great ride is only a few details away.</p>
 
         <form onSubmit={handleRegister}>
-          <input
+          <label>Full name</label><input
             type="text"
             placeholder="Enter name"
             value={name}
@@ -57,7 +58,7 @@ function Register() {
             required
           />
 
-          <input
+          <label>Email address</label><input
             type="email"
             placeholder="Enter email"
             value={email}
@@ -65,7 +66,7 @@ function Register() {
             required
           />
 
-          <input
+          <label>Password</label><input
             type="password"
             placeholder="Enter password"
             value={password}
@@ -73,7 +74,7 @@ function Register() {
             required
           />
 
-          <input
+          <label>Phone number</label><input
             type="text"
             placeholder="Enter phone"
             value={phone}
@@ -86,11 +87,10 @@ function Register() {
           </button>
         </form>
 
-        {message && <p>{message}</p>}
+        {message && <p className="notice">{message}</p>}
 
         <p>
-          Already have an account?{" "}
-          <Link to="/login">Login</Link>
+          Already a member? <Link to="/login">Sign in</Link>
         </p>
       </div>
     </div>

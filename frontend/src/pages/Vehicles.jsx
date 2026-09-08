@@ -36,48 +36,34 @@ function Vehicles() {
   }
 
   return (
-    <div>
-<h1>Vehicle Rental System</h1>
-      {message && <p>{message}</p>}
+    <div className="vehicles-page">
+      <section className="page-hero">
+        <div>
+          <p className="eyebrow">Your next journey starts here</p>
+          <h1>Find the right ride.</h1>
+          <p>Choose from our well-maintained vehicles and book in just a few clicks.</p>
+        </div>
+        <div className="hero-stat"><strong>{vehicles.length}</strong><span>vehicles ready to go</span></div>
+      </section>
+      {message && <p className="notice">{message}</p>}
 
       {vehicles.length === 0 ? (
         <p>No vehicles available.</p>
       ) : (
-        <div>
+        <div className="vehicle-grid">
           {vehicles.map((vehicle) => (
-            <div key={vehicle._id}>
-              <h2>{vehicle.name}</h2>
-
-              <p>
-                <strong>Brand:</strong> {vehicle.brand}
-              </p>
-
-              <p>
-                <strong>Model:</strong> {vehicle.model}
-              </p>
-
-              <p>
-                <strong>Vehicle Number:</strong>{" "}
-                {vehicle.vehicleNumber}
-              </p>
-
-              <p>
-                <strong>Price per day:</strong> ₹
-                {vehicle.pricePerDay}
-              </p>
-
-              <p>
-                <strong>Status:</strong> {vehicle.status}
-              </p>
-
-              {vehicle.status === "AVAILABLE" && (
-                <button onClick={() => handleBook(vehicle._id)}>
-    Book Now
-  </button>
-              )}
-
-              <hr />
-            </div>
+            <article className="vehicle-card" key={vehicle._id}>
+              <div className="vehicle-visual"><span>🚘</span><span className={`status ${vehicle.status?.toLowerCase()}`}>{vehicle.status}</span></div>
+              <div className="vehicle-content">
+                <p className="vehicle-brand">{vehicle.brand}</p>
+                <h2>{vehicle.name}</h2>
+                <p className="vehicle-model">{vehicle.model} · {vehicle.vehicleNumber}</p>
+                <div className="vehicle-footer">
+                  <p className="price"><strong>₹{vehicle.pricePerDay}</strong> / day</p>
+                  {vehicle.status === "AVAILABLE" ? <button onClick={() => handleBook(vehicle._id)}>Book now <span>→</span></button> : <span className="unavailable">Currently unavailable</span>}
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       )}

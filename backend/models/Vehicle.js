@@ -26,7 +26,7 @@ const vehicleSchema = new mongoose.Schema(
         category: {
             type: String,
             enum: ["CAR", "BIKE", "SUV"],
-            required: true
+            default: "CAR"
         },
 
         pricePerDay: {

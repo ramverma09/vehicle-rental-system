@@ -51,13 +51,14 @@ function Login() {
   return (
     <div className="auth-container">
       <div className="auth-box">
-
-        <h1>Vehicle Rental System</h1>
-        <h2>Login</h2>
+        <p className="auth-brand"><span>D</span> DriveEasy</p>
+        <p className="eyebrow">Welcome back</p>
+        <h1>Sign in to your account</h1>
+        <p className="auth-subtitle">Manage your bookings and hit the road.</p>
 
         <form onSubmit={handleLogin}>
 
-          <input
+          <label>Email address</label><input
             type="email"
             placeholder="Enter email"
             value={email}
@@ -65,7 +66,7 @@ function Login() {
             required
           />
 
-          <input
+          <label>Password</label><input
             type="password"
             placeholder="Enter password"
             value={password}
@@ -79,11 +80,10 @@ function Login() {
 
         </form>
 
-        {message && <p>{message}</p>}
+        {message && <p className="notice">{message}</p>}
 
         <p>
-          Don't have an account?{" "}
-          <Link to="/register">Register</Link>
+          New to DriveEasy? <Link to="/register">Create an account</Link>
         </p>
 
       </div>
