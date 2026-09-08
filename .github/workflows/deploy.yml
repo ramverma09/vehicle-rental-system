@@ -43,3 +43,18 @@ jobs:
       - name: Push Frontend
         run: |
           docker push ghcr.io/ramverma09/vehicle-rental-frontend:latest
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/vehicle-rental
+
+            docker compose pull
+
+            docker compose up -d
+
+            docker image prune -f
